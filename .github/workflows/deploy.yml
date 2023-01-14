@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        username: [ ${{ github.repository_owner }} ]
+        username: ${{ github.repository_owner }}
         include:
             - name: DockerHub
               password: ${{ secrets.DOCKERHUB_TOKEN }}
