@@ -10,10 +10,10 @@ jobs:
         username: ${{ github.repository_owner }}
         include:
             - name: DockerHub
-              password: ${{ secrets.DOCKERHUB_TOKEN }}
+              password: DOCKERHUB_TOKEN
             - name: GitHub Container Registry
               registry: ghcr.io
-              password: ${{ secrets.GITHUB_TOKEN }}
+              password: GITHUB_TOKEN
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -31,7 +31,7 @@ jobs:
         with:
           registry: ${{ matrix.registry }}
           username: ${{ matrix.username }}
-          password: ${{ matrix.password }}
+          password: ${{ secrets[matrix.password] }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
